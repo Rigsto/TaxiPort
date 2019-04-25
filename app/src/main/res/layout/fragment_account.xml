@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".mainfragment.AccountFragment">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <android.support.constraint.ConstraintLayout
+                style="@style/padd"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/img_profile"
+                    android:layout_width="@dimen/img_profile"
+                    android:layout_height="@dimen/img_profile"
+                    android:scaleType="fitXY"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tv_name"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/small_margin"
+                    android:layout_marginEnd="8dp"
+                    android:text="@string/name_hint"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/bigger_text"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toStartOf="@+id/tv_edit"
+                    app:layout_constraintStart_toEndOf="@+id/img_profile"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tv_email"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/small_margin"
+                    android:text="@string/email_hint"
+                    android:textColor="@color/black"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/img_profile"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_name" />
+
+                <TextView
+                    android:id="@+id/tv_phone"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/small_margin"
+                    android:text="@string/phone_hint"
+                    android:textColor="@color/black"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/img_profile"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_email" />
+
+                <TextView
+                    android:id="@+id/tv_edit"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/edit"
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/bigger_text"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </android.support.constraint.ConstraintLayout>
+
+            <View style="@style/view" />
+
+            <RelativeLayout
+                android:id="@+id/rl_change_pass"
+                style="@style/padd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/imageView1"
+                    android:layout_width="@dimen/img_account"
+                    android:layout_height="@dimen/img_account"
+                    android:src="@drawable/ic_changepassword" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="@dimen/activity_vertical_margin"
+                    android:layout_toEndOf="@id/imageView1"
+                    android:text="@string/change_password"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/big_text" />
+            </RelativeLayout>
+
+            <View
+                style="@style/view"
+                android:layout_height="@dimen/v1" />
+
+            <RelativeLayout
+                android:id="@+id/rl_change_lang"
+                style="@style/padd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/imageView2"
+                    android:layout_width="@dimen/img_account"
+                    android:layout_height="@dimen/img_account"
+                    android:src="@drawable/ic_changelanguange" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="@dimen/activity_vertical_margin"
+                    android:layout_toEndOf="@id/imageView2"
+                    android:text="@string/change_language"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/big_text" />
+            </RelativeLayout>
+            <View style="@style/view" />
+            <RelativeLayout
+                android:id="@+id/rl_about"
+                style="@style/padd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:id="@+id/imageView5"
+                    android:layout_width="@dimen/img_account"
+                    android:layout_height="@dimen/img_account"
+                    android:src="@drawable/ic_about" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="@dimen/activity_vertical_margin"
+                    android:layout_toEndOf="@id/imageView5"
+                    android:text="@string/about"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/big_text" />
+            </RelativeLayout>
+            <View style="@style/view" />
+        </LinearLayout>
+        <Button
+            android:id="@+id/logout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_red"
+            android:text="@string/logout"
+            android:textSize="@dimen/big_text"
+            android:textColor="@color/red"
+            app:layout_constraintBottom_toBottomOf="parent" />
+    </android.support.constraint.ConstraintLayout>
+</FrameLayout>

@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context="com.aurigaaristo.taxiportfinal.DetailActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <android.support.constraint.ConstraintLayout
+            style="@style/padd"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:layout_width="@dimen/img_logo"
+                android:layout_height="@dimen/img_code"
+                android:src="@drawable/taxiport"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_detail_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/order_time_hint"
+                android:textColor="@color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_detail_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/id_hint"
+                android:textColor="@color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_detail_time" />
+        </android.support.constraint.ConstraintLayout>
+
+        <View style="@style/view" />
+
+        <LinearLayout
+            style="@style/padd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/customer_name"
+                android:textColor="@color/greynull" />
+
+            <TextView
+                android:id="@+id/tv_detail_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/name_hint"
+                android:textColor="@color/black"
+                android:textSize="@dimen/huge_text" />
+        </LinearLayout>
+
+        <View
+            style="@style/view"
+            android:layout_height="@dimen/v1" />
+
+        <LinearLayout
+            style="@style/padd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/destination_address"
+                android:textColor="@color/greynull" />
+
+            <TextView
+                android:id="@+id/tv_detail_destination"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/order_place_hint"
+                android:textColor="@color/black"
+                android:textSize="@dimen/huge_text" />
+        </LinearLayout>
+
+        <View
+            style="@style/view"
+            android:layout_height="@dimen/v1" />
+
+        <LinearLayout
+            style="@style/padd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/city"
+                android:textColor="@color/greynull" />
+
+            <TextView
+                android:id="@+id/tv_detail_city"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/city_hint"
+                android:textColor="@color/black"
+                android:textSize="@dimen/huge_text" />
+        </LinearLayout>
+
+        <View
+            style="@style/view"
+            android:layout_height="@dimen/v1" />
+
+        <LinearLayout
+            style="@style/padd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/sub_district"
+                android:textColor="@color/greynull" />
+
+            <TextView
+                android:id="@+id/tv_detail_district"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/city_hint"
+                android:textColor="@color/black"
+                android:textSize="@dimen/huge_text" />
+        </LinearLayout>
+
+        <View
+            style="@style/view"
+            android:layout_height="@dimen/v1" />
+
+        <LinearLayout
+            style="@style/padd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/urban_village"
+                android:textColor="@color/greynull" />
+
+            <TextView
+                android:id="@+id/tv_detail_urban"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/urban_hint"
+                android:textColor="@color/black"
+                android:textSize="@dimen/huge_text" />
+        </LinearLayout>
+
+        <View
+            style="@style/view"
+            android:layout_height="@dimen/v1" />
+
+        <LinearLayout
+            style="@style/padd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/total_passengers"
+                android:textColor="@color/greynull" />
+
+            <TextView
+                android:id="@+id/tv_detail_passengers"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/passengers_hint"
+                android:textColor="@color/black"
+                android:textSize="@dimen/huge_text" />
+        </LinearLayout>
+
+        <View style="@style/view" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ProgressBar
+                android:id="@+id/pb_accept"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true" />
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/btn_detail_accept"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_green"
+            android:text="@string/accept"
+            android:textColor="@color/white"
+            android:textSize="@dimen/bigger_text" />
+
+        <Button
+            android:id="@+id/btn_detail_reject"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/tiny_margin"
+            android:background="@drawable/button_red"
+            android:text="@string/reject"
+            android:textColor="@color/red"
+            android:textSize="@dimen/bigger_text" />
+    </LinearLayout>
+</ScrollView>

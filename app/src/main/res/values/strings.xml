@@ -1,0 +1,94 @@
+<resources>
+    <string name="app_name">TaxiPort</string>
+
+    <!--login activity-->
+    <string name="str_logo">logo</string>
+    <string name="email_address">Email Address</string>
+    <string name="password">Password</string>
+    <string name="btn_forgot_password">Forgot Password?</string>
+    <string name="sign_in">Sign in</string>
+    <string name="re_type_password">Re-type Password</string>
+    <string name="forgot_password">Forgot Password</string>
+
+    <!--bottom navigation-->
+    <string name="orders">Orders</string>
+    <string name="history">History</string>
+    <string name="account">Account</string>
+
+    <!--main activity-->
+    <string name="no_data">NO DATA</string>
+    <string name="no_order">NO ORDER</string>
+    <string name="check_in">CHECK IN</string>
+
+    <!--main activity hint-->
+    <string name="order_place_hint">Taman Puspa Raya</string>
+    <string name="order_time_hint">07 Mar, 13:37 PM</string>
+    <string name="name_hint">John Doe</string>
+    <string name="email_hint">example@gmail.com</string>
+    <string name="phone_hint">+62123456890</string>
+    <string name="id_hint">Order L-0001</string>
+    <string name="city_hint">Sidoarjo</string>
+    <string name="urban_hint">Bluru</string>
+    <string name="passengers_hint">3 people</string>
+    <string name="urban_district_hint">Made, Sambikerep</string>
+
+    <!--main activity (account)-->
+    <string name="profil">Profile</string>
+    <string name="change_password">Change Password</string>
+    <string name="change_language">Change Language</string>
+    <string name="information">Information</string>
+    <string name="terms_of_service">Terms of Service</string>
+    <string name="about">About</string>
+    <string name="logout">LOGOUT</string>
+    <string name="edit">EDIT</string>
+
+    <!--toast-->
+    <string name="req_email">Email is required</string>
+    <string name="req_pass">Password is required</string>
+    <string name="login_failed">Login Failed! Please try again later!</string>
+    <string name="wrong_login">Wrong Email or Password</string>
+    <string name="login_succesful">Login successful!</string>
+    <string name="pass_doesnt_match">Password doesn\'t match</string>
+    <string name="email_not_found">Email not found</string>
+    <string name="connection_failed">Connection Failed! Please try again later!</string>
+    <string name="password_changed">Password Changed!</string>
+    <string name="try_again">Try Again</string>
+    <string name="req_name">Name is required</string>
+    <string name="req_phone">Phone is Required</string>
+    <string name="profile_updated">Profile Updated</string>
+    <string name="req_old_pass">Old Password is required</string>
+    <string name="req_new_pass">New password is required</string>
+    <string name="pass_mis">Password mismatch</string>
+    <string name="pass_must_diff">Password must be different</string>
+
+    <!--detail activity-->
+    <string name="customer_name">Customer Name</string>
+    <string name="destination_address">Destination Address</string>
+    <string name="city">City</string>
+    <string name="sub_district">Sub-district</string>
+    <string name="urban_village">Urban Village</string>
+    <string name="total_passengers">Total Passengers</string>
+    <string name="accept">Accept</string>
+    <string name="reject">Reject</string>
+    <string name="arrived">Arrived</string>
+    <string name="return_to_airport">Return to Menu</string>
+    <string name="order_details">Order Details</string>
+    <string name="ongoing_orders">Ongoing Orders</string>
+
+    <!--settings activity-->
+    <string name="name">Name</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="save_changes">Save Changes</string>
+    <string name="old_password">Old Password</string>
+    <string name="new_password">New Password</string>
+
+    <!--language-->
+    <string name="english">English</string>
+    <string name="indonesia">Indonesian</string>
+
+    <!--alert dialog-->
+    <string name="language">Language</string>
+    <string name="change">Change</string>
+    <string name="cancel">Cancel</string>
+    <string name="success_check_in">Successfully Checked In</string>
+</resources>

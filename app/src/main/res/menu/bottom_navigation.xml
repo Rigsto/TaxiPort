@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/bn_orders"
+        android:title="@string/orders"
+        android:icon="@drawable/ic_orders"/>
+    <item
+        android:id="@+id/bn_history"
+        android:title="@string/history"
+        android:icon="@drawable/ic_history"/>
+    <item
+        android:id="@+id/bn_account"
+        android:title="@string/account"
+        android:icon="@drawable/ic_account"/>
+</menu>
