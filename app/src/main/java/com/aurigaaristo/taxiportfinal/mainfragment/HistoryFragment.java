@@ -35,6 +35,8 @@ public class HistoryFragment extends Fragment implements LoaderManager.LoaderCal
     private HistoryAdapter adapter;
     private TextView tvNoData;
 
+    private Bundle saved;
+
     public HistoryFragment() {
 
     }
@@ -53,7 +55,12 @@ public class HistoryFragment extends Fragment implements LoaderManager.LoaderCal
         pbOrders = view.findViewById(R.id.pb_history);
         tvNoData = view.findViewById(R.id.tv_history_nodata);
 
-        getLoaderManager().initLoader(0, savedInstanceState, this);
+        if (saved != null) {
+            getLoaderManager().initLoader(0, saved, this);
+        } else {
+            saved = savedInstanceState;
+            getLoaderManager().initLoader(0, savedInstanceState, this);
+        }
     }
 
     @Override
@@ -119,6 +126,8 @@ public class HistoryFragment extends Fragment implements LoaderManager.LoaderCal
     @Override
     public void onResume() {
         super.onResume();
-        getLoaderManager().initLoader(0, null, this);
+        if (saved != null) {
+            getLoaderManager().initLoader(0, saved, this);
+        }
     }
 }

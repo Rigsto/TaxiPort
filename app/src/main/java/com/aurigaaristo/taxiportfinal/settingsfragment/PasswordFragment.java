@@ -129,10 +129,4 @@ public class PasswordFragment extends Fragment implements View.OnClickListener, 
     public void onLoaderReset(@NonNull Loader<Integer> loader) {
 
     }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        getLoaderManager().initLoader(0, null, this);
-    }
 }

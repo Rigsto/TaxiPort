@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.Loader;
 import android.view.LayoutInflater;
@@ -20,7 +19,6 @@ import android.widget.Toast;
 import com.aurigaaristo.taxiportfinal.MainActivity;
 import com.aurigaaristo.taxiportfinal.R;
 import com.aurigaaristo.taxiportfinal.loader.ProfileLoader;
-import com.aurigaaristo.taxiportfinal.loginfragment.LoginFragment;
 import com.aurigaaristo.taxiportfinal.preference.Pref;
 
 /**
@@ -121,12 +119,6 @@ public class ProfileFragment extends Fragment implements View.OnClickListener, L
     @Override
     public void onLoaderReset(@NonNull Loader<Integer> loader) {
 
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        getLoaderManager().initLoader(0, null, this);
     }
 
     private boolean checkAns(){
