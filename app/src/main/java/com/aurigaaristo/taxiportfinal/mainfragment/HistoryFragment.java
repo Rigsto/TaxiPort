@@ -35,7 +35,7 @@ public class HistoryFragment extends Fragment implements LoaderManager.LoaderCal
     private HistoryAdapter adapter;
     private TextView tvNoData;
 
-    private Bundle saved;
+    private Bundle saved = null;
 
     public HistoryFragment() {
 
@@ -80,7 +80,13 @@ public class HistoryFragment extends Fragment implements LoaderManager.LoaderCal
 
     @SuppressWarnings("unchecked")
     private void processData(){
-        int total = (int) data.get("total");
+        int total = 0;
+        try {
+            total = (int) data.get("total");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
         int code =  (int) data.get("code");
         if (code == 0){
             AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());

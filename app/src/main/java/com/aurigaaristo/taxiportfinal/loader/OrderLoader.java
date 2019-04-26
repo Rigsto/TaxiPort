@@ -90,7 +90,7 @@ public class OrderLoader extends AsyncTaskLoader<HashMap<String, Object>> {
                     try {
                         JSONObject object = responseObject.getJSONObject("taken");
                         Order taken = new Order();
-                        taken.setId(object.getString("id"));
+                        taken.setId(object.getString("id_order"));
                         taken.setName(object.getString("nama"));
                         taken.setDestination(object.getString("tujuan"));
                         taken.setDate(object.getString("time"));
@@ -110,7 +110,7 @@ public class OrderLoader extends AsyncTaskLoader<HashMap<String, Object>> {
                         for (int i = 0; i < results.length(); i++) {
                             JSONObject object = results.getJSONObject(i);
                             Order order = new Order();
-                            order.setId(object.getString("id"));
+                            order.setId(object.getString("id_order"));
                             order.setName(object.getString("nama"));
                             order.setDestination(object.getString("tujuan"));
                             order.setDate(object.getString("time"));

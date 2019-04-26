@@ -3,10 +3,10 @@ package com.aurigaaristo.taxiportfinal.mainfragment;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.Loader;
 import android.support.v7.widget.LinearLayoutManager;
@@ -20,7 +20,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.aurigaaristo.taxiportfinal.DetailActivity;
-import com.aurigaaristo.taxiportfinal.MainActivity;
 import com.aurigaaristo.taxiportfinal.R;
 import com.aurigaaristo.taxiportfinal.adapter.OrderAdapter;
 import com.aurigaaristo.taxiportfinal.adapter.TakenAdapter;
@@ -77,6 +76,7 @@ public class OrdersFragment extends Fragment implements LoaderManager.LoaderCall
         if (pref.getStatPreference() == 0){
             btnCheckIn.setVisibility(View.VISIBLE);
             tvNoData.setVisibility(View.VISIBLE);
+            pbOrders.setVisibility(View.GONE);
         } else {
             getLoaderManager().initLoader(0, null, this);
         }
@@ -96,6 +96,7 @@ public class OrdersFragment extends Fragment implements LoaderManager.LoaderCall
     @Override
     public void onLoadFinished(@NonNull Loader<HashMap<String, Object>> loader, HashMap<String, Object> orders) {
         this.data = orders;
+        pbOrders.setVisibility(View.INVISIBLE);
         processData();
     }
 
@@ -106,7 +107,7 @@ public class OrdersFragment extends Fragment implements LoaderManager.LoaderCall
 
     @SuppressWarnings("unchecked")
     private void processData(){
-        boolean taken = (boolean) data.get("taken");;
+        boolean taken = (boolean) data.get("taken");
         int total = (int) data.get("total");
         int code =  (int) data.get("code");
         if (code == 0){

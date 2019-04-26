@@ -1,12 +1,12 @@
 package com.aurigaaristo.taxiportfinal;
 
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.aurigaaristo.taxiportfinal.mainfragment.AccountFragment;
@@ -29,8 +29,9 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         toolbar = getSupportActionBar();
         navigationView = findViewById(R.id.bottom_navigation);
         navigationView.setOnNavigationItemSelectedListener(this);
-        toolbar.setTitle(getString(R.string.app_name));
 
+        toolbar.setDisplayShowTitleEnabled(true);
+        toolbar.setTitle(getString(R.string.app_name));
         fragment = new OrdersFragment();
 
         if (getIntent().getStringExtra("x") != null){

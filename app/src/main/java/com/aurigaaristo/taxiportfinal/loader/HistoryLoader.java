@@ -6,7 +6,9 @@ import android.support.v4.content.AsyncTaskLoader;
 
 import com.aurigaaristo.taxiportfinal.BuildConfig;
 import com.aurigaaristo.taxiportfinal.entity.Order;
+import com.aurigaaristo.taxiportfinal.preference.Pref;
 import com.loopj.android.http.AsyncHttpResponseHandler;
+import com.loopj.android.http.RequestParams;
 import com.loopj.android.http.SyncHttpClient;
 
 import org.json.JSONArray;
@@ -21,9 +23,13 @@ public class HistoryLoader extends AsyncTaskLoader<HashMap<String, Object>> {
     private HashMap<String, Object> data;
     private boolean result = false;
 
+    private Pref pref;
+
     public HistoryLoader(final Context context){
         super(context);
         onContentChanged();
+
+        pref = new Pref(context);
     }
 
     @Override
@@ -61,6 +67,9 @@ public class HistoryLoader extends AsyncTaskLoader<HashMap<String, Object>> {
         //int code, int total, arraylist orders
 
         String url = BuildConfig.PHP_LOADER + "historyapp.php";
+
+        RequestParams params = new RequestParams();
+        params.put("email", pref.getEmailPreference());
 
         client.get(url, new AsyncHttpResponseHandler() {
             @Override

@@ -42,13 +42,12 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.Category
         String place1 = getData().get(i).getDestination();
         String place2 = getData().get(i).getUrban() + ", " + getData().get(i).getCity();
         String time = getData().get(i).getDate();
-        String url = "";
 
         categoryViewHolder.tvPlace.setText(place1);
         categoryViewHolder.tvUrban.setText(place2);
         categoryViewHolder.tvTime.setText(time);
 
-        Picasso.with(context).load(url).into(categoryViewHolder.imgOrder);
+        Picasso.with(context).load(R.drawable.ic_account).into(categoryViewHolder.imgOrder);
     }
 
     @Override
