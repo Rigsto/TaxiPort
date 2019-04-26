@@ -79,7 +79,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener, Loa
             clLogin.setVisibility(View.VISIBLE);
         } else {
             pbAutoLogin.setVisibility(View.VISIBLE);
-            login(email, pass);
+            login(email, pass, 1);
         }
     }
 
@@ -94,7 +94,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener, Loa
                     String email = edtEmail.getText().toString();
                     String password = edtPassword.getText().toString();
 
-                    login(email, password);
+                    login(email, password, 0);
                 }
                 break;
             case R.id.tv_forgotPassword:
@@ -117,10 +117,11 @@ public class LoginFragment extends Fragment implements View.OnClickListener, Loa
         return true;
     }
 
-    private void login(String email, String password){
+    private void login(String email, String password, int logincode) {
         Bundle bundle = new Bundle();
         bundle.putString("email", email);
         bundle.putString("password", password);
+        bundle.putInt("login", logincode);
 
         if (send) {
             getLoaderManager().restartLoader(0, bundle, this);
@@ -133,12 +134,14 @@ public class LoginFragment extends Fragment implements View.OnClickListener, Loa
     @Override
     public Loader<Integer> onCreateLoader(int i, Bundle bundle) {
         String email = "", password = "";
+        int code = 0;
         if (bundle != null){
             email = bundle.getString("email");
             password = bundle.getString("password");
+            code = bundle.getInt("login");
         }
 
-        return new LoginLoader(getActivity(), email, password);
+        return new LoginLoader(getActivity(), email, password, code);
     }
 
     @Override

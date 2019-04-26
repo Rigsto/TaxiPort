@@ -18,12 +18,14 @@ public class LoginLoader extends AsyncTaskLoader<Integer> {
     private int code = 0;
 
     private String email, password;
+    private int login;
     private Pref pref;
 
-    public LoginLoader(final Context context, String email, String password){
+    public LoginLoader(final Context context, String email, String password, int login) {
         super(context);
         this.email = email;
         this.password = password;
+        this.login = login;
 
         pref = new Pref(context);
 
@@ -69,6 +71,7 @@ public class LoginLoader extends AsyncTaskLoader<Integer> {
         RequestParams param = new RequestParams();
         param.put("email", email);
         param.put("password", password);
+        param.put("login", login);
 
         client.post(url, param, new AsyncHttpResponseHandler() {
             @Override
