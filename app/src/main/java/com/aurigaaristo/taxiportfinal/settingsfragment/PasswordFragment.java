@@ -33,7 +33,7 @@ public class PasswordFragment extends Fragment implements View.OnClickListener, 
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         return inflater.inflate(R.layout.fragment_password, container, false);
@@ -92,6 +92,7 @@ public class PasswordFragment extends Fragment implements View.OnClickListener, 
         return true;
     }
 
+    @NonNull
     @Override
     public Loader<Integer> onCreateLoader(int i, @Nullable Bundle bundle) {
         String pass = "";

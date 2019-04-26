@@ -28,6 +28,32 @@ public class ArriveLoader extends AsyncTaskLoader<Integer> {
         email = pref.getEmailPreference();
     }
 
+    @Override
+    protected void onStartLoading() {
+        if (takeContentChanged()) {
+            forceLoad();
+        } else {
+            deliverResult(code);
+        }
+    }
+
+    @Override
+    public void deliverResult(@Nullable Integer data) {
+        super.deliverResult(data);
+        if (data != null) {
+            this.code = data;
+        }
+    }
+
+    @Override
+    protected void onReset() {
+        super.onReset();
+        onStopLoading();
+        if (code != 0) {
+            code = 0;
+        }
+    }
+
 //    code :
 //    0 = failed
 //    1 = success

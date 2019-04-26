@@ -1,6 +1,7 @@
 package com.aurigaaristo.taxiportfinal.loader;
 
 import android.content.Context;
+import android.support.annotation.Nullable;
 import android.support.v4.content.AsyncTaskLoader;
 
 import com.aurigaaristo.taxiportfinal.BuildConfig;
@@ -29,10 +30,36 @@ public class LoginLoader extends AsyncTaskLoader<Integer> {
         onContentChanged();
     }
 
-//    code :
+    @Override
+    protected void onStartLoading() {
+        if (takeContentChanged()) {
+            forceLoad();
+        } else {
+            deliverResult(code);
+        }
+    }
+
+    @Override
+    public void deliverResult(@Nullable Integer data) {
+        super.deliverResult(data);
+        if (data != null) {
+            this.code = data;
+        }
+    }
+
+    @Override
+    protected void onReset() {
+        super.onReset();
+        onStopLoading();
+        if (code != 0) {
+            code = 0;
+        }
+    }
+
+    //    code :
 //    0 = send data failed
-//    1 = wrong password or username
-//    2 = correct
+//    2 = wrong password or username
+//    1 = correct
 
     @Override
     public Integer loadInBackground() {
