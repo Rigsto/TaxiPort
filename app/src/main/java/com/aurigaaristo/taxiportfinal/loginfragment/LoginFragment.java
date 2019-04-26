@@ -148,9 +148,11 @@ public class LoginFragment extends Fragment implements View.OnClickListener, Loa
     public void onLoadFinished(@NonNull Loader<Integer> loader, Integer code) {
         if (code == 0){
             Toast.makeText(getActivity(), getString(R.string.login_failed), Toast.LENGTH_SHORT).show();
+            pref.resetPreference();
             relogin();
         } else if (code == 2){
             Toast.makeText(getActivity(), getString(R.string.wrong_login), Toast.LENGTH_SHORT).show();
+            pref.resetPreference();
             relogin();
         } else if (code == 1){
             Toast.makeText(getActivity(), getString(R.string.login_succesful), Toast.LENGTH_SHORT).show();

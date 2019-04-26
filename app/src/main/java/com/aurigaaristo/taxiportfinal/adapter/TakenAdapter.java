@@ -41,12 +41,11 @@ public class TakenAdapter extends RecyclerView.Adapter<TakenAdapter.CategoryView
     public void onBindViewHolder(@NonNull TakenAdapter.CategoryViewHolder categoryViewHolder, int i) {
         String place = getData().get(i).getDestination();
         String time = getData().get(i).getDate();
-        String url = "";
 
         categoryViewHolder.tvPlace.setText(place);
         categoryViewHolder.tvTime.setText(time);
 
-        Picasso.with(context).load(url).into(categoryViewHolder.imgOrder);
+        Picasso.with(context).load("https://liseia.org/wp-content/uploads/2018/04/no-photo-male.jpg").into(categoryViewHolder.imgOrder);
     }
 
     @Override

@@ -107,7 +107,12 @@ public class OrdersFragment extends Fragment implements LoaderManager.LoaderCall
 
     @SuppressWarnings("unchecked")
     private void processData(){
-        boolean taken = (boolean) data.get("taken");
+        boolean taken = false;
+        try {
+            taken = (boolean) data.get("taken");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         int total = (int) data.get("total");
         int code =  (int) data.get("code");
         if (code == 0){
@@ -201,7 +206,14 @@ public class OrdersFragment extends Fragment implements LoaderManager.LoaderCall
     @Override
     public void onResume() {
         super.onResume();
-        getLoaderManager().initLoader(0, null, this);
+        btnCheckIn.setVisibility(View.GONE);
+        if (pref.getStatPreference() == 0) {
+            btnCheckIn.setVisibility(View.VISIBLE);
+            tvNoData.setVisibility(View.VISIBLE);
+            pbOrders.setVisibility(View.GONE);
+        } else {
+            getLoaderManager().initLoader(0, null, this);
+        }
     }
 
     @Override

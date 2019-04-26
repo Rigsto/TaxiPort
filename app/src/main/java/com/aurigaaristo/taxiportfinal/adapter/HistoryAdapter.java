@@ -47,7 +47,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.Category
         categoryViewHolder.tvUrban.setText(place2);
         categoryViewHolder.tvTime.setText(time);
 
-        Picasso.with(context).load(R.drawable.ic_account).into(categoryViewHolder.imgOrder);
+        Picasso.with(context).load("https://liseia.org/wp-content/uploads/2018/04/no-photo-male.jpg").into(categoryViewHolder.imgOrder);
     }
 
     @Override
