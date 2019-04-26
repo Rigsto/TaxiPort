@@ -154,6 +154,14 @@
             </RelativeLayout>
             <View style="@style/view" />
         </LinearLayout>
+
+        <ProgressBar
+            android:id="@+id/pb_logout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@+id/logout"
+            app:layout_constraintEnd_toEndOf="@+id/logout"
+            app:layout_constraintStart_toStartOf="@+id/logout" />
         <Button
             android:id="@+id/logout"
             android:layout_width="match_parent"

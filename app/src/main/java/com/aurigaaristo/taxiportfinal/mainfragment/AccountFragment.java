@@ -9,6 +9,8 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.LoaderManager;
+import android.support.v4.content.Loader;
 import android.support.v7.app.AlertDialog;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
@@ -16,14 +18,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.aurigaaristo.taxiportfinal.BuildConfig;
 import com.aurigaaristo.taxiportfinal.LoginActivity;
 import com.aurigaaristo.taxiportfinal.MainActivity;
 import com.aurigaaristo.taxiportfinal.R;
 import com.aurigaaristo.taxiportfinal.SettingsActivity;
+import com.aurigaaristo.taxiportfinal.loader.LogoutLoader;
 import com.aurigaaristo.taxiportfinal.preference.Pref;
 import com.squareup.picasso.Picasso;
 
@@ -32,11 +37,12 @@ import java.util.Locale;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class AccountFragment extends Fragment implements View.OnClickListener{
+public class AccountFragment extends Fragment implements View.OnClickListener, LoaderManager.LoaderCallbacks<Integer> {
     private ImageView imgProfile;
     private TextView tvName, tvEmail, tvPhone, tvEdit;
     private RelativeLayout rlChangePass, rlChangeLang, rlAbout;
     private Button btnLogout;
+    private ProgressBar pbLogout;
 
     private Intent intent;
     private Locale locale;
@@ -65,6 +71,8 @@ public class AccountFragment extends Fragment implements View.OnClickListener{
         rlChangeLang = view.findViewById(R.id.rl_change_lang);
         rlAbout = view.findViewById(R.id.rl_about);
         btnLogout = view.findViewById(R.id.logout);
+        pbLogout = view.findViewById(R.id.pb_logout);
+        pbLogout.setVisibility(View.INVISIBLE);
 
         tvEdit.setOnClickListener(this);
         rlChangePass.setOnClickListener(this);
@@ -108,9 +116,7 @@ public class AccountFragment extends Fragment implements View.OnClickListener{
                 startActivity(intent);
                 break;
             case R.id.logout:
-                pref.resetPreference();
-                intent = new Intent(getActivity(), LoginActivity.class);
-                startActivity(intent);
+                getLoaderManager().initLoader(0, null, this);
                 break;
         }
     }
@@ -162,5 +168,44 @@ public class AccountFragment extends Fragment implements View.OnClickListener{
         Intent intent = new Intent(getActivity(), MainActivity.class);
         startActivity(intent);
         getActivity().finish();
+    }
+
+
+    @NonNull
+    @Override
+    public Loader<Integer> onCreateLoader(int i, @Nullable Bundle bundle) {
+        btnLogout.setVisibility(View.INVISIBLE);
+        pbLogout.setVisibility(View.VISIBLE);
+
+        String email = pref.getEmailPreference();
+
+        return new LogoutLoader(getActivity(), email);
+    }
+
+    @Override
+    public void onLoadFinished(@NonNull Loader<Integer> loader, Integer code) {
+        if (code == 0) {
+            Toast.makeText(getActivity(), getString(R.string.logout_failed), Toast.LENGTH_SHORT).show();
+            relogout();
+        } else if (code == 2) {
+            Toast.makeText(getActivity(), getString(R.string.wrong_login), Toast.LENGTH_SHORT).show();
+            relogout();
+        } else if (code == 1) {
+            Toast.makeText(getActivity(), getString(R.string.logout_successful), Toast.LENGTH_SHORT).show();
+
+            pref.resetPreference();
+            intent = new Intent(getActivity(), LoginActivity.class);
+            startActivity(intent);
+        }
+    }
+
+    @Override
+    public void onLoaderReset(@NonNull Loader<Integer> loader) {
+
+    }
+
+    private void relogout() {
+        btnLogout.setVisibility(View.VISIBLE);
+        pbLogout.setVisibility(View.INVISIBLE);
     }
 }

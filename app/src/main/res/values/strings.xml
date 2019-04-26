@@ -91,4 +91,6 @@
     <string name="change">Change</string>
     <string name="cancel">Cancel</string>
     <string name="success_check_in">Successfully Checked In</string>
+    <string name="logout_failed">Logout Failed! Please try again later!</string>
+    <string name="logout_successful">Logout Successful</string>
 </resources>
