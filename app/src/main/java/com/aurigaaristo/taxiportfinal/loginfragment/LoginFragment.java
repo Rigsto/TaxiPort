@@ -35,6 +35,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener, Loa
     private ConstraintLayout clLogin;
 
     private Pref pref;
+    private boolean send = false;
 
     public LoginFragment() {
 
@@ -121,7 +122,12 @@ public class LoginFragment extends Fragment implements View.OnClickListener, Loa
         bundle.putString("email", email);
         bundle.putString("password", password);
 
-        getLoaderManager().initLoader(0, bundle, this);
+        if (send) {
+            getLoaderManager().restartLoader(0, bundle, this);
+        } else {
+            getLoaderManager().initLoader(0, bundle, this);
+            send = true;
+        }
     }
 
     @Override

@@ -30,6 +30,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener, L
     private ProgressBar pbSave;
 
     private Pref pref;
+    private boolean send = false;
 
     public ProfileFragment() {
 
@@ -77,7 +78,12 @@ public class ProfileFragment extends Fragment implements View.OnClickListener, L
                 bundle.putString("name", name);
                 bundle.putString("phone", phone);
 
-                getLoaderManager().initLoader(0, bundle, this);
+                if (send) {
+                    getLoaderManager().restartLoader(0, bundle, this);
+                } else {
+                    getLoaderManager().initLoader(0, bundle, this);
+                    send = true;
+                }
             }
         }
     }

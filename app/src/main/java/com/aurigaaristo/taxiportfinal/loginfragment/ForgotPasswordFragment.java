@@ -27,6 +27,8 @@ public class ForgotPasswordFragment extends Fragment implements View.OnClickList
     private Button btnForgot;
     private ProgressBar pbForgot;
 
+    private boolean send = false;
+
     public ForgotPasswordFragment() {
 
     }
@@ -61,7 +63,12 @@ public class ForgotPasswordFragment extends Fragment implements View.OnClickList
                 bundle.putString("email", edtEmail.getText().toString());
                 bundle.putString("password", edtPassword.getText().toString());
 
-                getLoaderManager().initLoader(0, bundle, this);
+                if (send) {
+                    getLoaderManager().restartLoader(0, bundle, this);
+                } else {
+                    getLoaderManager().initLoader(0, bundle, this);
+                    send = true;
+                }
             }
         }
     }

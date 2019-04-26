@@ -1,12 +1,12 @@
 package com.aurigaaristo.taxiportfinal;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.Loader;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
@@ -26,6 +26,9 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
     private Order order;
     private Intent intent;
     private int take;
+
+    private boolean sendTake = false;
+    private boolean sendArrive = false;
 
     private static final int TAKE_ORDER_ID = 1;
     private static final int ARRIVED_ID = 2;
@@ -132,7 +135,12 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
         Bundle bundle = new Bundle();
         bundle.putString("id", id);
 
-        getSupportLoaderManager().initLoader(TAKE_ORDER_ID, bundle, takeOrderListener);
+        if (sendTake) {
+            getSupportLoaderManager().restartLoader(TAKE_ORDER_ID, bundle, takeOrderListener);
+        } else {
+            getSupportLoaderManager().initLoader(TAKE_ORDER_ID, bundle, takeOrderListener);
+            sendTake = true;
+        }
     }
 
     private LoaderManager.LoaderCallbacks<Integer> takeOrderListener = new LoaderManager.LoaderCallbacks<Integer>() {
@@ -177,7 +185,12 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
         Bundle bundle = new Bundle();
         bundle.putString("id", id);
 
-        getSupportLoaderManager().initLoader(ARRIVED_ID, bundle, arrivedListener);
+        if (sendArrive) {
+            getSupportLoaderManager().restartLoader(ARRIVED_ID, bundle, arrivedListener);
+        } else {
+            getSupportLoaderManager().initLoader(ARRIVED_ID, bundle, arrivedListener);
+            sendArrive = true;
+        }
     }
 
     private LoaderManager.LoaderCallbacks<Integer> arrivedListener = new LoaderManager.LoaderCallbacks<Integer>() {

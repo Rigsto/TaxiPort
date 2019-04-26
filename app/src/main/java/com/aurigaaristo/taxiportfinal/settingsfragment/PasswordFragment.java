@@ -28,6 +28,8 @@ public class PasswordFragment extends Fragment implements View.OnClickListener, 
     private ProgressBar pbSave;
     private Button btnSave;
 
+    private boolean send = false;
+
     public PasswordFragment() {
 
     }
@@ -63,7 +65,12 @@ public class PasswordFragment extends Fragment implements View.OnClickListener, 
                 Bundle bundle = new Bundle();
                 bundle.putString("password", pass);
 
-                getLoaderManager().initLoader(0, bundle, this);
+                if (send) {
+                    getLoaderManager().restartLoader(0, bundle, this);
+                } else {
+                    getLoaderManager().initLoader(0, bundle, this);
+                    send = true;
+                }
             }
         }
     }
