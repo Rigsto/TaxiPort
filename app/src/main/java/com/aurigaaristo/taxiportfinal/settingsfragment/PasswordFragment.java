@@ -19,6 +19,7 @@ import android.widget.Toast;
 import com.aurigaaristo.taxiportfinal.MainActivity;
 import com.aurigaaristo.taxiportfinal.R;
 import com.aurigaaristo.taxiportfinal.loader.ChangePasswordLoader;
+import com.aurigaaristo.taxiportfinal.preference.Pref;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -27,6 +28,7 @@ public class PasswordFragment extends Fragment implements View.OnClickListener, 
     private EditText edtOld, edtNew, edtNew2;
     private ProgressBar pbSave;
     private Button btnSave;
+    private Pref pref;
 
     private boolean send = false;
 
@@ -86,6 +88,10 @@ public class PasswordFragment extends Fragment implements View.OnClickListener, 
         }
         if (edtNew2.getText().toString().isEmpty()){
             Toast.makeText(getActivity(), getString(R.string.req_new_pass), Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if(edtOld.getText().toString().equals(pref.getPasswordPreference())){
+            Toast.makeText(getActivity(), getString(R.string.inv_old_pass), Toast.LENGTH_SHORT).show();
             return false;
         }
         if (!edtNew.getText().toString().equals(edtNew2.getText().toString())){

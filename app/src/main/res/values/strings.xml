@@ -58,6 +58,7 @@
     <string name="profile_updated">Profile Updated</string>
     <string name="req_old_pass">Old Password is required</string>
     <string name="req_new_pass">New password is required</string>
+    <string name="inv_old_pass">Invalid Old Password</string>
     <string name="pass_mis">Password mismatch</string>
     <string name="pass_must_diff">Password must be different</string>
 
