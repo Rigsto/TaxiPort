@@ -53,6 +53,7 @@ public class PasswordFragment extends Fragment implements View.OnClickListener, 
         btnSave.setOnClickListener(this);
         pbSave = view.findViewById(R.id.pb_save_password);
         pbSave.setVisibility(View.INVISIBLE);
+        pref = new Pref(getActivity());
     }
 
     @Override
@@ -90,7 +91,7 @@ public class PasswordFragment extends Fragment implements View.OnClickListener, 
             Toast.makeText(getActivity(), getString(R.string.req_new_pass), Toast.LENGTH_SHORT).show();
             return false;
         }
-        if(edtOld.getText().toString().equals(pref.getPasswordPreference())){
+        if (!edtOld.getText().toString().equals(pref.getPasswordPreference())){
             Toast.makeText(getActivity(), getString(R.string.inv_old_pass), Toast.LENGTH_SHORT).show();
             return false;
         }

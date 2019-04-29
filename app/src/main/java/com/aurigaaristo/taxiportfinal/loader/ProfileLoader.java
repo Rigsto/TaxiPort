@@ -80,6 +80,8 @@ public class ProfileLoader extends AsyncTaskLoader<Integer> {
                     JSONObject responseObject = new JSONObject(hasil);
 
                     code = responseObject.getInt("code");
+                    pref.setNamePreference(name);
+                    pref.setPhonePreference(phone);
                 } catch (Exception e){
                     e.printStackTrace();
                 }
