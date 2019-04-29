@@ -128,7 +128,8 @@ public class OrdersFragment extends Fragment implements LoaderManager.LoaderCall
                 }
             });
         } else if(code == 1){
-            ArrayList<Order> orders;
+            ArrayList<Order> orders = new ArrayList<>();
+            int j = 0;
             if (taken || total > 0){
                 orders = (ArrayList<Order>) data.get("orders");
 
@@ -137,11 +138,12 @@ public class OrdersFragment extends Fragment implements LoaderManager.LoaderCall
                     Order take = orders.get(0);
                     arrTaken.add(take);
                     loadTaken(arrTaken);
+                    j = 1;
                 }
 
                 if (total > 0){
                     ArrayList<Order> arrOrder = new ArrayList<>();
-                    for (int i=1; i<orders.size(); i++){
+                    for (int i = j; i < orders.size(); i++) {
                         arrOrder.add(orders.get(i));
                     }
                     loadOrder(arrOrder);
@@ -158,6 +160,7 @@ public class OrdersFragment extends Fragment implements LoaderManager.LoaderCall
             if (!taken && total == 0){
                 tvNoData.setVisibility(View.VISIBLE);
             }
+            Toast.makeText(getActivity(), "Total: " + total + ", result: " + orders.size(), Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -180,6 +183,7 @@ public class OrdersFragment extends Fragment implements LoaderManager.LoaderCall
                 startActivity(intent);
             }
         });
+
     }
 
     private void loadOrder(ArrayList<Order> arr) {
