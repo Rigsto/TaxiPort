@@ -26,7 +26,7 @@ public class OrderLoader extends AsyncTaskLoader<HashMap<String, Object>> {
 
     public OrderLoader(final Context context) {
         super(context);
-//        pref = new Pref(context);
+        pref = new Pref(context);
         onContentChanged();
     }
 
