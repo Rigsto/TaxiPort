@@ -160,7 +160,6 @@ public class OrdersFragment extends Fragment implements LoaderManager.LoaderCall
             if (!taken && total == 0){
                 tvNoData.setVisibility(View.VISIBLE);
             }
-            Toast.makeText(getActivity(), "Total: " + total + ", result: " + orders.size(), Toast.LENGTH_SHORT).show();
         }
     }
 

@@ -3,6 +3,7 @@ package com.aurigaaristo.taxiportfinal.orderprocessloader;
 import android.content.Context;
 import android.support.annotation.Nullable;
 import android.support.v4.content.AsyncTaskLoader;
+import android.widget.Toast;
 
 import com.aurigaaristo.taxiportfinal.BuildConfig;
 import com.aurigaaristo.taxiportfinal.preference.Pref;
@@ -15,7 +16,7 @@ import org.json.JSONObject;
 import cz.msebera.android.httpclient.Header;
 
 public class TakeOrderLoader extends AsyncTaskLoader<Integer> {
-    private String idOrder, email;
+    private String idOrder;
     private int code = 0;
 
     private Pref pref;
@@ -25,7 +26,8 @@ public class TakeOrderLoader extends AsyncTaskLoader<Integer> {
         this.idOrder = id;
 
         pref = new Pref(context);
-        email = pref.getEmailPreference();
+
+        onContentChanged();
     }
 
     @Override
@@ -65,7 +67,7 @@ public class TakeOrderLoader extends AsyncTaskLoader<Integer> {
 
         RequestParams params = new RequestParams();
         params.put("idOrder", idOrder);
-        params.put("email", email);
+        params.put("email", pref.getEmailPreference());
 
         client.post(url, params, new AsyncHttpResponseHandler() {
             @Override
@@ -85,6 +87,6 @@ public class TakeOrderLoader extends AsyncTaskLoader<Integer> {
                 code = 0;
             }
         });
-        return 0;
+        return code;
     }
 }

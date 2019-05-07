@@ -18,7 +18,7 @@ import com.aurigaaristo.taxiportfinal.orderprocessloader.ArriveLoader;
 import com.aurigaaristo.taxiportfinal.orderprocessloader.TakeOrderLoader;
 import com.aurigaaristo.taxiportfinal.preference.Pref;
 
-public class DetailActivity extends AppCompatActivity implements View.OnClickListener {
+public class DetailActivity extends AppCompatActivity implements View.OnClickListener, LoaderManager.LoaderCallbacks<Integer>{
     private TextView tvTime, tvId, tvName, tvDest, tvCity, tvDistrict, tvUrban, tvPassenger;
     private Button btnAccept, btnReject;
     private ProgressBar pbAccept;
@@ -27,11 +27,10 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
     private Intent intent;
     private int take;
 
-    private boolean sendTake = false;
-    private boolean sendArrive = false;
+    private boolean sendTake, sendArrive;
 
-    private static final int TAKE_ORDER_ID = 1;
-    private static final int ARRIVED_ID = 2;
+    private final int TAKE_ORDER_ID = 1;
+    private final int ARRIVED_ID = 2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +51,9 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
         btnReject.setOnClickListener(this);
         pbAccept = findViewById(R.id.pb_accept);
         pbAccept.setVisibility(View.GONE);
+
+        sendTake = false;
+        sendArrive = false;
 
         if (getIntent() != null) {
             order = getIntent().getParcelableExtra("order");
@@ -136,27 +138,47 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
         bundle.putString("id", id);
 
         if (sendTake) {
-            getSupportLoaderManager().restartLoader(TAKE_ORDER_ID, bundle, takeOrderListener);
+            getSupportLoaderManager().restartLoader(TAKE_ORDER_ID, bundle, this);
         } else {
-            getSupportLoaderManager().initLoader(TAKE_ORDER_ID, bundle, takeOrderListener);
+            getSupportLoaderManager().initLoader(TAKE_ORDER_ID, bundle, this);
             sendTake = true;
         }
     }
 
-    private LoaderManager.LoaderCallbacks<Integer> takeOrderListener = new LoaderManager.LoaderCallbacks<Integer>() {
-        @NonNull
-        @Override
-        public Loader<Integer> onCreateLoader(int i, @Nullable Bundle bundle) {
-            String id = "";
-            if (bundle != null){
-                id = bundle.getString("id");
-            }
+    private void arrived(Order order){
+        String id = order.getId();
 
-            return new TakeOrderLoader(getApplicationContext(), id);
+        Bundle bundle = new Bundle();
+        bundle.putString("id", id);
+
+        if (sendArrive) {
+            getSupportLoaderManager().restartLoader(ARRIVED_ID, bundle, this);
+        } else {
+            getSupportLoaderManager().initLoader(ARRIVED_ID, bundle, this);
+            sendArrive = true;
+        }
+    }
+
+    @NonNull
+    @Override
+    public Loader<Integer> onCreateLoader(int i, @Nullable Bundle bundle) {
+        String id = "";
+        if (bundle != null){
+            id = bundle.getString("id");
         }
 
-        @Override
-        public void onLoadFinished(@NonNull Loader<Integer> loader, Integer code) {
+        Toast.makeText(this, i + " " + id, Toast.LENGTH_SHORT).show();
+
+        if (i == TAKE_ORDER_ID){
+            return new TakeOrderLoader(getApplicationContext(), id);
+        } else {
+            return new ArriveLoader(getApplicationContext(), id);
+        }
+    }
+
+    @Override
+    public void onLoadFinished(@NonNull Loader<Integer> loader, Integer code) {
+        if (loader.getId() == TAKE_ORDER_ID){
             switch (code){
                 case 0:
                     Toast.makeText(getApplicationContext(), getString(R.string.connection_failed), Toast.LENGTH_SHORT).show();
@@ -171,41 +193,7 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
                     finish();
                     break;
             }
-        }
-
-        @Override
-        public void onLoaderReset(@NonNull Loader<Integer> loader) {
-
-        }
-    };
-
-    private void arrived(Order order){
-        String id = order.getId();
-
-        Bundle bundle = new Bundle();
-        bundle.putString("id", id);
-
-        if (sendArrive) {
-            getSupportLoaderManager().restartLoader(ARRIVED_ID, bundle, arrivedListener);
-        } else {
-            getSupportLoaderManager().initLoader(ARRIVED_ID, bundle, arrivedListener);
-            sendArrive = true;
-        }
-    }
-
-    private LoaderManager.LoaderCallbacks<Integer> arrivedListener = new LoaderManager.LoaderCallbacks<Integer>() {
-        @Override
-        public Loader<Integer> onCreateLoader(int i, @Nullable Bundle bundle) {
-            String id = "";
-            if (bundle != null){
-                id = bundle.getString("id");
-            }
-
-            return new ArriveLoader(getApplicationContext(), id);
-        }
-
-        @Override
-        public void onLoadFinished(@NonNull Loader<Integer> loader, Integer code) {
+        } else if (loader.getId() == ARRIVED_ID){
             switch (code){
                 case 0:
                     Toast.makeText(getApplicationContext(), getString(R.string.connection_failed), Toast.LENGTH_SHORT).show();
@@ -222,10 +210,10 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
                     break;
             }
         }
+    }
 
-        @Override
-        public void onLoaderReset(@NonNull Loader<Integer> loader) {
+    @Override
+    public void onLoaderReset(@NonNull Loader<Integer> loader) {
 
-        }
-    };
+    }
 }

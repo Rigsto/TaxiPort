@@ -15,7 +15,7 @@ import org.json.JSONObject;
 import cz.msebera.android.httpclient.Header;
 
 public class ArriveLoader extends AsyncTaskLoader<Integer> {
-    private String idOrder, email;
+    private String idOrder;
     private int code = 0;
 
     private Pref pref;
@@ -25,7 +25,8 @@ public class ArriveLoader extends AsyncTaskLoader<Integer> {
         this.idOrder = id;
 
         pref = new Pref(context);
-        email = pref.getEmailPreference();
+
+        onContentChanged();
     }
 
     @Override
@@ -66,7 +67,7 @@ public class ArriveLoader extends AsyncTaskLoader<Integer> {
 
         RequestParams params = new RequestParams();
         params.put("idOrder", idOrder);
-        params.put("email", email);
+        params.put("email", pref.getEmailPreference());
 
         client.post(url, params, new AsyncHttpResponseHandler() {
             @Override
