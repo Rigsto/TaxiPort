@@ -167,8 +167,6 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
             id = bundle.getString("id");
         }
 
-        Toast.makeText(this, i + " " + id, Toast.LENGTH_SHORT).show();
-
         if (i == TAKE_ORDER_ID){
             return new TakeOrderLoader(getApplicationContext(), id);
         } else {

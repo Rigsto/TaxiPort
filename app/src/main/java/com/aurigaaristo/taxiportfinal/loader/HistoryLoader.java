@@ -95,7 +95,6 @@ public class HistoryLoader extends AsyncTaskLoader<HashMap<String, Object>> {
                         for (int i = 0; i < results.length(); i++) {
                             JSONObject object = results.getJSONObject(i);
                             Order order = new Order();
-                            order.setId(object.getString("id"));
                             order.setDestination(object.getString("tujuan"));
                             order.setDate(object.getString("time"));
                             order.setCity(object.getString("kota"));
