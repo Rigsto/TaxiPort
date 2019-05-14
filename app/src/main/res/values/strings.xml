@@ -1,8 +1,8 @@
 <resources>
-    <string name="app_name">TaxiPort</string>
+    <string name="app_name" translatable="false">TaxiPort</string>
 
     <!--login activity-->
-    <string name="str_logo">logo</string>
+    <string name="str_logo" translatable="false">logo</string>
     <string name="email_address">Email Address</string>
     <string name="password">Password</string>
     <string name="btn_forgot_password">Forgot Password?</string>
@@ -21,16 +21,16 @@
     <string name="check_in">CHECK IN</string>
 
     <!--main activity hint-->
-    <string name="order_place_hint">Taman Puspa Raya</string>
-    <string name="order_time_hint">07 Mar, 13:37 PM</string>
-    <string name="name_hint">John Doe</string>
-    <string name="email_hint">example@gmail.com</string>
-    <string name="phone_hint">+62123456890</string>
-    <string name="id_hint">Order L-0001</string>
-    <string name="city_hint">Sidoarjo</string>
-    <string name="urban_hint">Bluru</string>
+    <string name="order_place_hint" translatable="false">Taman Puspa Raya</string>
+    <string name="order_time_hint" translatable="false">07 Mar, 13:37 PM</string>
+    <string name="name_hint" translatable="false">John Doe</string>
+    <string name="email_hint" translatable="false">example@gmail.com</string>
+    <string name="phone_hint" translatable="false">+62123456890</string>
+    <string name="id_hint" translatable="false">Order L-0001</string>
+    <string name="city_hint" translatable="false">Sidoarjo</string>
+    <string name="urban_hint" translatable="false">Bluru</string>
     <string name="passengers_hint">3 people</string>
-    <string name="urban_district_hint">Made, Sambikerep</string>
+    <string name="urban_district_hint" translatable="false">Made, Sambikerep</string>
 
     <!--main activity (account)-->
     <string name="profil">Profile</string>
