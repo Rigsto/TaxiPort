@@ -31,8 +31,9 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.Category
         this.context = context;
     }
 
+    @NonNull
     @Override
-    public HistoryAdapter.CategoryViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
+    public HistoryAdapter.CategoryViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_history, viewGroup, false);
         return new HistoryAdapter.CategoryViewHolder(view);
     }
@@ -47,7 +48,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.Category
         categoryViewHolder.tvUrban.setText(place2);
         categoryViewHolder.tvTime.setText(time);
 
-        Picasso.with(context).load("https://liseia.org/wp-content/uploads/2018/04/no-photo-male.jpg").into(categoryViewHolder.imgOrder);
+        Picasso.with(context).load(R.drawable.no_photo_male).into(categoryViewHolder.imgOrder);
     }
 
     @Override
@@ -61,12 +62,12 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.Category
         private TextView tvUrban;
         private ImageView imgOrder;
 
-        public CategoryViewHolder(View view){
+        CategoryViewHolder(View view) {
             super(view);
             tvPlace = view.findViewById(R.id.tv_history_place);
             tvTime = view.findViewById(R.id.tv_history_time);
             tvUrban = view.findViewById(R.id.tv_history_urban_district);
-            imgOrder = view.findViewById(R.id.img_order);
+            imgOrder = view.findViewById(R.id.img_history);
         }
     }
 }

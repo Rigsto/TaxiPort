@@ -31,8 +31,9 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.CategoryView
         this.context = context;
     }
 
+    @NonNull
     @Override
-    public OrderAdapter.CategoryViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
+    public OrderAdapter.CategoryViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_order, viewGroup, false);
         return new CategoryViewHolder(view);
     }
@@ -45,7 +46,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.CategoryView
         categoryViewHolder.tvPlace.setText(place);
         categoryViewHolder.tvTime.setText(time);
 
-        Picasso.with(context).load("https://liseia.org/wp-content/uploads/2018/04/no-photo-male.jpg").into(categoryViewHolder.imgOrder);
+        Picasso.with(context).load(R.drawable.no_photo_male).into(categoryViewHolder.imgOrder);
     }
 
     @Override
