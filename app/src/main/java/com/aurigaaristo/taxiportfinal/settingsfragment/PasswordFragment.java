@@ -21,6 +21,8 @@ import com.aurigaaristo.taxiportfinal.R;
 import com.aurigaaristo.taxiportfinal.loader.ChangePasswordLoader;
 import com.aurigaaristo.taxiportfinal.preference.Pref;
 
+import java.util.Objects;
+
 /**
  * A simple {@link Fragment} subclass.
  */
@@ -130,7 +132,7 @@ public class PasswordFragment extends Fragment implements View.OnClickListener, 
                 Intent intent = new Intent(getActivity(), MainActivity.class);
                 intent.putExtra("x", "settings");
                 startActivity(intent);
-                getActivity().finish();
+                Objects.requireNonNull(getActivity()).finish();
                 break;
         }
     }

@@ -59,7 +59,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.CategoryView
         private TextView tvTime;
         private ImageView imgOrder;
 
-        public CategoryViewHolder(View view){
+        CategoryViewHolder(View view) {
             super(view);
             tvPlace = view.findViewById(R.id.tv_order_place);
             tvTime = view.findViewById(R.id.tv_order_time);

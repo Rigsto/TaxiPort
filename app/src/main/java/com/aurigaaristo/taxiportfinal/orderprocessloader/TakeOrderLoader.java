@@ -3,7 +3,6 @@ package com.aurigaaristo.taxiportfinal.orderprocessloader;
 import android.content.Context;
 import android.support.annotation.Nullable;
 import android.support.v4.content.AsyncTaskLoader;
-import android.widget.Toast;
 
 import com.aurigaaristo.taxiportfinal.BuildConfig;
 import com.aurigaaristo.taxiportfinal.preference.Pref;

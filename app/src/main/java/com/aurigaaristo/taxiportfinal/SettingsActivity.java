@@ -1,21 +1,22 @@
 package com.aurigaaristo.taxiportfinal;
 
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 
 import com.aurigaaristo.taxiportfinal.settingsfragment.AboutFragment;
 import com.aurigaaristo.taxiportfinal.settingsfragment.PasswordFragment;
 import com.aurigaaristo.taxiportfinal.settingsfragment.ProfileFragment;
 
 public class SettingsActivity extends AppCompatActivity {
-    private Fragment fragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
+
+        Fragment fragment;
 
         if (getIntent() != null){
             String type = getIntent().getStringExtra("type");

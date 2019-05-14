@@ -24,12 +24,13 @@ import com.aurigaaristo.taxiportfinal.R;
 import com.aurigaaristo.taxiportfinal.loader.LoginLoader;
 import com.aurigaaristo.taxiportfinal.preference.Pref;
 
+import java.util.Objects;
+
 /**
  * A simple {@link Fragment} subclass.
  */
 public class LoginFragment extends Fragment implements View.OnClickListener, LoaderManager.LoaderCallbacks<Integer> {
     private EditText edtEmail, edtPassword;
-    private TextView tvForgot;
     private Button btnLogin;
     private ProgressBar pbLogin, pbAutoLogin;
     private ConstraintLayout clLogin;
@@ -43,7 +44,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener, Loa
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         return inflater.inflate(R.layout.fragment_login, container, false);
@@ -56,7 +57,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener, Loa
         edtPassword = view.findViewById(R.id.edt_login_password);
         btnLogin = view.findViewById(R.id.btn_login);
         btnLogin.setOnClickListener(this);
-        tvForgot = view.findViewById(R.id.tv_forgotPassword);
+        TextView tvForgot = view.findViewById(R.id.tv_forgotPassword);
         tvForgot.setOnClickListener(this);
         pbLogin = view.findViewById(R.id.pb_login);
 
@@ -98,7 +99,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener, Loa
                 }
                 break;
             case R.id.tv_forgotPassword:
-                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                FragmentTransaction transaction = Objects.requireNonNull(getActivity()).getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.frame_login, new ForgotPasswordFragment());
                 transaction.addToBackStack(null);
                 transaction.commit();
@@ -131,6 +132,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener, Loa
         }
     }
 
+    @NonNull
     @Override
     public Loader<Integer> onCreateLoader(int i, Bundle bundle) {
         String email = "", password = "";
@@ -158,7 +160,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener, Loa
             Toast.makeText(getActivity(), getString(R.string.login_succesful), Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(getActivity(), MainActivity.class);
             startActivity(intent);
-            getActivity().finish();
+            Objects.requireNonNull(getActivity()).finish();
         }
     }
 

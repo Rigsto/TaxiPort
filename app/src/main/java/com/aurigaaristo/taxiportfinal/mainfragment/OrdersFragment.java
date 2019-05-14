@@ -39,8 +39,6 @@ public class OrdersFragment extends Fragment implements LoaderManager.LoaderCall
     private ProgressBar pbOrders;
     private TextView tvNoData;
     private HashMap<String, Object> data;
-    private OrderAdapter adapter;
-    private TakenAdapter tAdapter;
 
     private Pref pref;
     private Button btnCheckIn;
@@ -50,7 +48,7 @@ public class OrdersFragment extends Fragment implements LoaderManager.LoaderCall
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         return inflater.inflate(R.layout.fragment_orders, container, false);
@@ -128,13 +126,14 @@ public class OrdersFragment extends Fragment implements LoaderManager.LoaderCall
                 }
             });
         } else if(code == 1){
-            ArrayList<Order> orders = new ArrayList<>();
+            ArrayList<Order> orders;
             int j = 0;
             if (taken || total > 0){
                 orders = (ArrayList<Order>) data.get("orders");
 
                 if (taken){
                     ArrayList<Order> arrTaken = new ArrayList<>();
+                    assert orders != null;
                     Order take = orders.get(0);
                     arrTaken.add(take);
                     loadTaken(arrTaken);
@@ -143,6 +142,7 @@ public class OrdersFragment extends Fragment implements LoaderManager.LoaderCall
 
                 if (total > 0){
                     ArrayList<Order> arrOrder = new ArrayList<>();
+                    assert orders != null;
                     for (int i = j; i < orders.size(); i++) {
                         arrOrder.add(orders.get(i));
                     }
@@ -166,7 +166,7 @@ public class OrdersFragment extends Fragment implements LoaderManager.LoaderCall
     private void loadTaken(ArrayList<Order> arr){
         final ArrayList<Order> ta = arr;
         rvTaken.setLayoutManager(new LinearLayoutManager(getActivity()));
-        tAdapter = new TakenAdapter(getActivity());
+        TakenAdapter tAdapter = new TakenAdapter(getActivity());
         tAdapter.setData(ta);
         tAdapter.notifyDataSetChanged();
         rvTaken.setAdapter(tAdapter);
@@ -188,7 +188,7 @@ public class OrdersFragment extends Fragment implements LoaderManager.LoaderCall
     private void loadOrder(ArrayList<Order> arr) {
         final ArrayList<Order> or = arr;
         rvOrders.setLayoutManager(new LinearLayoutManager(getActivity()));
-        adapter = new OrderAdapter(getActivity());
+        OrderAdapter adapter = new OrderAdapter(getActivity());
         adapter.setData(or);
         adapter.notifyDataSetChanged();
         rvOrders.setAdapter(adapter);

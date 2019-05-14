@@ -19,8 +19,7 @@ import com.aurigaaristo.taxiportfinal.orderprocessloader.TakeOrderLoader;
 import com.aurigaaristo.taxiportfinal.preference.Pref;
 
 public class DetailActivity extends AppCompatActivity implements View.OnClickListener, LoaderManager.LoaderCallbacks<Integer>{
-    private TextView tvTime, tvId, tvName, tvDest, tvCity, tvDistrict, tvUrban, tvPassenger;
-    private Button btnAccept, btnReject;
+    private Button btnAccept;
     private ProgressBar pbAccept;
 
     private Order order;
@@ -37,17 +36,17 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
 
-        tvTime = findViewById(R.id.tv_detail_time);
-        tvId = findViewById(R.id.tv_detail_id);
-        tvName = findViewById(R.id.tv_detail_name);
-        tvDest = findViewById(R.id.tv_detail_destination);
-        tvCity = findViewById(R.id.tv_detail_city);
-        tvDistrict = findViewById(R.id.tv_detail_district);
-        tvUrban = findViewById(R.id.tv_detail_urban);
-        tvPassenger = findViewById(R.id.tv_detail_passengers);
+        TextView tvTime = findViewById(R.id.tv_detail_time);
+        TextView tvId = findViewById(R.id.tv_detail_id);
+        TextView tvName = findViewById(R.id.tv_detail_name);
+        TextView tvDest = findViewById(R.id.tv_detail_destination);
+        TextView tvCity = findViewById(R.id.tv_detail_city);
+        TextView tvDistrict = findViewById(R.id.tv_detail_district);
+        TextView tvUrban = findViewById(R.id.tv_detail_urban);
+        TextView tvPassenger = findViewById(R.id.tv_detail_passengers);
         btnAccept = findViewById(R.id.btn_detail_accept);
         btnAccept.setOnClickListener(this);
-        btnReject = findViewById(R.id.btn_detail_reject);
+        Button btnReject = findViewById(R.id.btn_detail_reject);
         btnReject.setOnClickListener(this);
         pbAccept = findViewById(R.id.pb_accept);
         pbAccept.setVisibility(View.GONE);

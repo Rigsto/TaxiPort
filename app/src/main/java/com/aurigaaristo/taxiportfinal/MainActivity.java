@@ -15,7 +15,6 @@ import com.aurigaaristo.taxiportfinal.settingsfragment.AboutFragment;
 
 public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener{
     private Fragment fragment;
-    private BottomNavigationView navigationView;
 
     String KEY_FRAGMENT = "keyfragment";
 
@@ -24,7 +23,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        navigationView = findViewById(R.id.bottom_navigation);
+        BottomNavigationView navigationView = findViewById(R.id.bottom_navigation);
         navigationView.setOnNavigationItemSelectedListener(this);
 
         if (getSupportActionBar() != null) {

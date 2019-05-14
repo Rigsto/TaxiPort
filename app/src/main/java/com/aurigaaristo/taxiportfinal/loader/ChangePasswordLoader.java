@@ -18,13 +18,12 @@ public class ChangePasswordLoader extends AsyncTaskLoader<Integer> {
     private int code = 0;
 
     private String email, password;
-    private Pref pref;
 
     public ChangePasswordLoader(final Context context, String password) {
         super(context);
         this.password = password;
 
-        pref = new Pref(context);
+        Pref pref = new Pref(context);
         this.email = pref.getEmailPreference();
     }
 

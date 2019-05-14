@@ -42,7 +42,7 @@ public class HistoryFragment extends Fragment implements LoaderManager.LoaderCal
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         return inflater.inflate(R.layout.fragment_history, container, false);
@@ -63,6 +63,7 @@ public class HistoryFragment extends Fragment implements LoaderManager.LoaderCal
         }
     }
 
+    @NonNull
     @Override
     public Loader<HashMap<String, Object>> onCreateLoader(int i, @Nullable Bundle bundle) {
         rvOrders.setVisibility(View.INVISIBLE);

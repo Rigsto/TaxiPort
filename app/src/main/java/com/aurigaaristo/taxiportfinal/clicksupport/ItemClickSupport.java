@@ -13,6 +13,19 @@ public class ItemClickSupport {
     private ItemClickSupport(RecyclerView recyclerView){
         this.recyclerView = recyclerView;
         this.recyclerView.setTag(R.id.item_click_support, this);
+        RecyclerView.OnChildAttachStateChangeListener attachListener = new RecyclerView.OnChildAttachStateChangeListener() {
+            @Override
+            public void onChildViewAttachedToWindow(@NonNull View view) {
+                if (onItemClickListener != null) {
+                    view.setOnClickListener(onClickListener);
+                }
+            }
+
+            @Override
+            public void onChildViewDetachedFromWindow(@NonNull View view) {
+
+            }
+        };
         this.recyclerView.addOnChildAttachStateChangeListener(attachListener);
     }
 
@@ -26,20 +39,6 @@ public class ItemClickSupport {
         }
     };
 
-    private RecyclerView.OnChildAttachStateChangeListener attachListener = new RecyclerView.OnChildAttachStateChangeListener(){
-        @Override
-        public void onChildViewAttachedToWindow(@NonNull View view) {
-            if (onItemClickListener != null){
-                view.setOnClickListener(onClickListener);
-            }
-        }
-
-        @Override
-        public void onChildViewDetachedFromWindow(@NonNull View view) {
-
-        }
-    };
-
     public static ItemClickSupport addTo(RecyclerView recyclerView){
         ItemClickSupport support = (ItemClickSupport) recyclerView.getTag(R.id.item_click_support);
         if (support == null){
@@ -48,14 +47,8 @@ public class ItemClickSupport {
         return support;
     }
 
-    public ItemClickSupport setOnItemClickListener(OnItemClickListener listener){
+    public void setOnItemClickListener(OnItemClickListener listener) {
         onItemClickListener = listener;
-        return this;
-    }
-
-    private void detach(RecyclerView view){
-        view.removeOnChildAttachStateChangeListener(attachListener);
-        view.setTag(R.id.item_click_support, null);
     }
 
     public interface OnItemClickListener {

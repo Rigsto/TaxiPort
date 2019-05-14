@@ -33,26 +33,27 @@ import com.aurigaaristo.taxiportfinal.preference.Pref;
 import com.squareup.picasso.Picasso;
 
 import java.util.Locale;
+import java.util.Objects;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class AccountFragment extends Fragment implements View.OnClickListener, LoaderManager.LoaderCallbacks<Integer> {
     private ImageView imgProfile;
-    private TextView tvName, tvEmail, tvPhone, tvEdit;
-    private RelativeLayout rlChangePass, rlChangeLang, rlAbout;
+    private TextView tvName;
+    private TextView tvEmail;
+    private TextView tvPhone;
     private Button btnLogout;
     private ProgressBar pbLogout;
 
     private Intent intent;
-    private Locale locale;
     private Pref pref;
 
     public AccountFragment() {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         return inflater.inflate(R.layout.fragment_account, container, false);
@@ -65,11 +66,11 @@ public class AccountFragment extends Fragment implements View.OnClickListener, L
         tvName = view.findViewById(R.id.tv_name);
         tvEmail = view.findViewById(R.id.tv_email);
         tvPhone = view.findViewById(R.id.tv_phone);
-        tvEdit = view.findViewById(R.id.tv_edit);
+        TextView tvEdit = view.findViewById(R.id.tv_edit);
 
-        rlChangePass = view.findViewById(R.id.rl_change_pass);
-        rlChangeLang = view.findViewById(R.id.rl_change_lang);
-        rlAbout = view.findViewById(R.id.rl_about);
+        RelativeLayout rlChangePass = view.findViewById(R.id.rl_change_pass);
+        RelativeLayout rlChangeLang = view.findViewById(R.id.rl_change_lang);
+        RelativeLayout rlAbout = view.findViewById(R.id.rl_about);
         btnLogout = view.findViewById(R.id.logout);
         pbLogout = view.findViewById(R.id.pb_logout);
         pbLogout.setVisibility(View.INVISIBLE);
@@ -126,7 +127,7 @@ public class AccountFragment extends Fragment implements View.OnClickListener, L
         String[] lang = new String[]{getResources().getString(R.string.english), getResources().getString(R.string.indonesia)};
         final int[] pil = new int[1];
 
-        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        AlertDialog.Builder builder = new AlertDialog.Builder(Objects.requireNonNull(getActivity()));
         builder.setTitle(getString(R.string.language));
         builder.setSingleChoiceItems(lang, checked, new DialogInterface.OnClickListener() {
             @Override
@@ -156,7 +157,7 @@ public class AccountFragment extends Fragment implements View.OnClickListener, L
     private void setLocale(int x){
         String[] lang = new String[]{"en", "in"};
         String language = lang[x];
-        locale = new Locale(language);
+        Locale locale = new Locale(language);
         Resources res = getResources();
         DisplayMetrics dm = res.getDisplayMetrics();
         Configuration conf = res.getConfiguration();
@@ -167,7 +168,7 @@ public class AccountFragment extends Fragment implements View.OnClickListener, L
     private void refresh(){
         Intent intent = new Intent(getActivity(), MainActivity.class);
         startActivity(intent);
-        getActivity().finish();
+        Objects.requireNonNull(getActivity()).finish();
     }
 
 

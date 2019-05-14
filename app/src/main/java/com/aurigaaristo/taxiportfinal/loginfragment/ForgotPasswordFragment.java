@@ -19,6 +19,8 @@ import android.widget.Toast;
 import com.aurigaaristo.taxiportfinal.R;
 import com.aurigaaristo.taxiportfinal.loader.ForgotPasswordLoader;
 
+import java.util.Objects;
+
 /**
  * A simple {@link Fragment} subclass.
  */
@@ -94,8 +96,10 @@ public class ForgotPasswordFragment extends Fragment implements View.OnClickList
     }
 
 
+    @NonNull
     @Override
     public Loader<Integer> onCreateLoader(int i, @Nullable Bundle bundle) {
+        assert bundle != null;
         String email = bundle.getString("email");
         String password = bundle.getString("password");
 
@@ -116,7 +120,7 @@ public class ForgotPasswordFragment extends Fragment implements View.OnClickList
             case 1:
                 Toast.makeText(getActivity(), getString(R.string.password_changed), Toast.LENGTH_SHORT).show();
 
-                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                FragmentTransaction transaction = Objects.requireNonNull(getActivity()).getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.frame_login, new LoginFragment());
                 transaction.addToBackStack(null);
                 transaction.commit();

@@ -5,7 +5,6 @@ import android.support.annotation.Nullable;
 import android.support.v4.content.AsyncTaskLoader;
 
 import com.aurigaaristo.taxiportfinal.BuildConfig;
-import com.aurigaaristo.taxiportfinal.preference.Pref;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 import com.loopj.android.http.SyncHttpClient;
@@ -18,14 +17,10 @@ public class LogoutLoader extends AsyncTaskLoader<Integer> {
     private int code = 0;
 
     private String email;
-    private Pref pref;
 
     public LogoutLoader(final Context context, String email) {
         super(context);
         this.email = email;
-
-        pref = new Pref(context);
-
         onContentChanged();
     }
 

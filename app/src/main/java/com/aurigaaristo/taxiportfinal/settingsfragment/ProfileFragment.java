@@ -21,6 +21,8 @@ import com.aurigaaristo.taxiportfinal.R;
 import com.aurigaaristo.taxiportfinal.loader.ProfileLoader;
 import com.aurigaaristo.taxiportfinal.preference.Pref;
 
+import java.util.Objects;
+
 /**
  * A simple {@link Fragment} subclass.
  */
@@ -29,7 +31,6 @@ public class ProfileFragment extends Fragment implements View.OnClickListener, L
     private Button btnSave;
     private ProgressBar pbSave;
 
-    private Pref pref;
     private boolean send = false;
 
     public ProfileFragment() {
@@ -37,7 +38,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener, L
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         return inflater.inflate(R.layout.fragment_profile, container, false);
@@ -54,11 +55,11 @@ public class ProfileFragment extends Fragment implements View.OnClickListener, L
 
         pbSave.setVisibility(View.INVISIBLE);
 
-        if (getActivity().getActionBar() != null){
-            getActivity().getActionBar().setTitle(getString(R.string.profil));
+        if (Objects.requireNonNull(getActivity()).getActionBar() != null) {
+            Objects.requireNonNull(getActivity().getActionBar()).setTitle(getString(R.string.profil));
         }
 
-        pref = new Pref(getActivity());
+        Pref pref = new Pref(getActivity());
 
         edtName.setText(pref.getNamePreference());
         edtPhone.setText(pref.getPhonePreference());
@@ -88,6 +89,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener, L
         }
     }
 
+    @NonNull
     @Override
     public Loader<Integer> onCreateLoader(int i, @Nullable Bundle bundle) {
         String name = "", phone = "";
@@ -112,7 +114,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener, L
                 Intent intent = new Intent(getActivity(), MainActivity.class);
                 intent.putExtra("x", "settings");
                 startActivity(intent);
-                getActivity().finish();
+                Objects.requireNonNull(getActivity()).finish();
                 break;
         }
     }
