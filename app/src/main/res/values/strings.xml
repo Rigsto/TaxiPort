@@ -94,4 +94,11 @@
     <string name="success_check_in">Successfully Checked In</string>
     <string name="logout_failed">Logout Failed! Please try again later!</string>
     <string name="logout_successful">Logout Successful</string>
+
+    <!--about-->
+    <string name="created_by">Created by:</string>
+    <string name="creator_name" translatable="false">Auriga Aristo - Henry David Lie</string>
+    <string name="special_thanks_to">Special Thanks to:</string>
+    <string name="mychael_m_engel" translatable="false">Mychael M. Engel</string>
+    <string name="dicoding_indonesia" translatable="false">Dicoding Indonesia</string>
 </resources>

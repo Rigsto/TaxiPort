@@ -64,4 +64,6 @@
     <string name="try_again">Coba Lagi</string>
     <string name="urban_village">Kelurahan</string>
     <string name="wrong_login">Surel atau Sandi Salah</string>
+    <string name="created_by">Dibuat oleh:</string>
+    <string name="special_thanks_to">Terima Kasih khusus untuk:</string>
 </resources>
