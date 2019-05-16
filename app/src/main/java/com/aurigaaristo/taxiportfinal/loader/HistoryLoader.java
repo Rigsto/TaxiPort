@@ -71,7 +71,7 @@ public class HistoryLoader extends AsyncTaskLoader<HashMap<String, Object>> {
         RequestParams params = new RequestParams();
         params.put("email", pref.getEmailPreference());
 
-        client.get(url, new AsyncHttpResponseHandler() {
+        client.get(url, params, new AsyncHttpResponseHandler() {
             @Override
             public void onStart() {
                 super.onStart();
