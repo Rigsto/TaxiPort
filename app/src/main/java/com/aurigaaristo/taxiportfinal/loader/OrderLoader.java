@@ -68,7 +68,7 @@ public class OrderLoader extends AsyncTaskLoader<HashMap<String, Object>> {
         RequestParams param = new RequestParams();
         param.put("email", pref.getEmailPreference());
 
-        client.get(url, param, new AsyncHttpResponseHandler() {
+        client.post(url, param, new AsyncHttpResponseHandler() {
             @Override
             public void onStart() {
                 super.onStart();
